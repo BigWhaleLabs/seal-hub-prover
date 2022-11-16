@@ -36,5 +36,5 @@ Also, please, consider looking at `.env.sample`.
 ### Vercel
 Unfortunately, there is no way to deploy ZK proof generator to Vercel due to lack of it's support of Docker.
 ### Google Cloud
-
+Visit [this page](./GCPINSTALLATION.md) for Google Cloud installation 
 ### Amazon AWS
