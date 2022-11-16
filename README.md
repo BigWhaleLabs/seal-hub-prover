@@ -27,3 +27,14 @@ And you should be good to go! Feel free to fork and submit pull requests.
 | `DOMAIN` | (Optional) Your domain for docker                                         |
 
 Also, please, consider looking at `.env.sample`.
+
+## Deploying to cloud
+### Digital Ocean
+[![Deploy to DO](https://www.deploytodo.com/do-btn-blue.svg)](https://cloud.digitalocean.com/apps/new?repo=https://github.com/BigWhaleLabs/seal-hub-prover/tree/main)
+### Heroku
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/BigWhaleLabs/seal-hub-prover/tree/main)
+### Vercel
+Unfortunately, there is no way to deploy ZK proof generator to Vercel due to lack of it's support of Docker.
+### Google Cloud
+
+### Amazon AWS
