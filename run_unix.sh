@@ -2,7 +2,7 @@
 sudo apt-get update
 
 # Remove old docker installations 
-sudo apt-get remove docker docker-engine docker.io containerd runc
+sudo apt-get remove -y docker docker-engine docker.io containerd runc
 # Install packages required for Docked
 sudo apt-get install -y ca-certificates curl gnupg lsb-release
 # Add docked official GPG key
@@ -22,6 +22,7 @@ sudo npm install --global yarn
 # Clone SealHub Proof Generator repository
 git clone https://github.com/BigWhaleLabs/seal-hub-prover.git
 cd seal-hub-prover 
+
 # Run yarn and start SealHub Proof Generator
-yarn 
+yarn install
 yarn docker-start-production
