@@ -6,5 +6,7 @@ spec:
         branch: main
         repo_clone_url: https://github.com/BigWhaleLabs/seal-hub-prover.git
       dockerfile_path: Dockerfile.backend.production
-  databases:
-    - name: mongodb
+      http_port: 1337
+    - cors:  
+        allow_origins:
+        - exact: https://hub.sealcred.xyz/   
