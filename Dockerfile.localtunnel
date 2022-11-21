@@ -1,0 +1,2 @@
+FROM node:18
+CMD ["npx localtunnel --port 1337 --local-host backend"]

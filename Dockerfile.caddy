@@ -1,0 +1,7 @@
+FROM caddy:2-alpine
+COPY Caddyfile /etc/caddy/Caddyfile
+CMD ["caddy reverse-proxy --from ${DOMAIN} --to http://backend:1337"]
+VOLUME [ "/data" ]
+VOLUME [ "/config" ]
+EXPOSE 80
+EXPOSE 443
