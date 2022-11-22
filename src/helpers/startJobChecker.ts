@@ -9,7 +9,7 @@ import generateProof from '@/helpers/generateProof'
 
 const vKey = JSON.parse(
   readFileSync(
-    resolve(cwd(), 'zkp/ECDSAChecker_verification_key.json')
+    resolve(cwd(), 'zk/ECDSAChecker_verification_key.json')
   ).toString()
 )
 

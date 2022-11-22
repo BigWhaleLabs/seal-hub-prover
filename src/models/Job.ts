@@ -1,5 +1,10 @@
 import { BigIntOrString } from '@/models/BigIntOrString'
-import { getModelForClass, modelOptions, prop } from '@typegoose/typegoose'
+import {
+  Severity,
+  getModelForClass,
+  modelOptions,
+  prop,
+} from '@typegoose/typegoose'
 import JobStatus from '@/models/JobStatus'
 import ProofResult from '@/models/ProofResult'
 
@@ -14,13 +19,13 @@ export class Job {
     default: JobStatus.scheduled,
   })
   status!: JobStatus
-  @prop({ _id: false })
+  @prop({ _id: false, allowMixed: Severity.ALLOW })
   input?: {
     TPreComputes: BigIntOrString[][][][]
     U: BigIntOrString[][]
     s: BigIntOrString[][]
   }
-  @prop()
+  @prop({ allowMixed: Severity.ALLOW })
   result?: ProofResult
 
   // Mongo fields
