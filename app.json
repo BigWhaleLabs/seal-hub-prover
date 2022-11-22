@@ -17,4 +17,3 @@
       "start": "docker-compose --profile=development up"
     }
   }
-  
