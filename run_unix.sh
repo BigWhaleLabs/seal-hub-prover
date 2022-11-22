@@ -14,7 +14,7 @@ echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.
 sudo apt-get update 
 
 # Install Docker and required packages
-sudo apt-get install -y git nodejs docker-ce docker-ce-cli containerd.io docker-compose-plugin
+sudo apt-get install -y git nodejs npm docker-ce docker-ce-cli containerd.io docker-compose-plugin
 
 # Install yarn
 sudo npm install --global yarn
@@ -25,4 +25,4 @@ cd seal-hub-prover
 
 # Run yarn and start SealHub Proof Generator
 yarn install
-yarn docker-start-production
+sudo docker compose --profile=production up

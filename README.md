@@ -34,10 +34,12 @@ Also, please, consider looking at `.env.sample`.
 ### Heroku
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/BigWhaleLabs/seal-hub-prover/tree/main)
 ### Google Cloud
-Visit [this page](./GCPINSTALLATION.md) for Google Cloud installation 
+Visit [this tutorial](./Tutorials/GCPINSTALLATION.md) for Google Cloud installation 
 ### Amazon AWS
-
+Visit [this tutorial](./Tutorials/AWSINSTALLATION.md) for Amazon AWS installation 
 ### Any VPS server with `apt` package manager
+**_Make sure your machine has at least 8GB of RAM_**
+
    Follow the next steps: <br>
 1. Make port `1337` of your VM accessible from outside
 2. _Download deployment script from our repo:_
@@ -48,6 +50,8 @@ Visit [this page](./GCPINSTALLATION.md) for Google Cloud installation
 
 4. _Run the script:_
    > `$ ./run_unix.sh`
+
+
 
    
 
