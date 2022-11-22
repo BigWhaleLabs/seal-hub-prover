@@ -1,3 +1,4 @@
+import { BigIntOrString } from '@/models/BigIntOrString'
 import { getModelForClass, modelOptions, prop } from '@typegoose/typegoose'
 import JobStatus from '@/models/JobStatus'
 import ProofResult from '@/models/ProofResult'
@@ -15,14 +16,15 @@ export class Job {
   status!: JobStatus
   @prop({ _id: false })
   input?: {
-    signature: string
-    message: string
+    TPreComputes: BigIntOrString[][][][]
+    U: BigIntOrString[][]
+    s: BigIntOrString[][]
   }
   @prop()
   result?: ProofResult
 
   // Mongo fields
-  createdAt?: Date
+  createdAt!: Date
 }
 
 export const JobModel = getModelForClass(Job)

@@ -1,39 +1,50 @@
 import { Body, Controller, Ctx, Get, Params, Post } from 'amala'
 import { Context } from 'koa'
-import { Job, JobModel } from '@/models/Job'
+import { JobModel } from '@/models/Job'
 import { notFound } from '@hapi/boom'
-import Inputs from '@/validators/Inputs'
+import { parse } from 'json-bigint'
 import JobStatus from '@/models/JobStatus'
-import ProofResultParams from '@/validators/ProofResultParam'
+import JsonProofInput from '@/validators/JsonProofInput'
+import ProofInput from '@/validators/ProofInput'
+import ProofStatusParams from '@/validators/ProofStatusParams'
 
-@Controller('/')
+@Controller('/prove')
 export default class ProveController {
   @Post('/')
-  async proof(@Body({ required: true }) input: Inputs) {
-    const job = await JobModel.create({ input })
-    job.input = undefined
-    const result: { job: Job; position?: number } = { job }
-    if (job.status === JobStatus.scheduled)
-      result.position = await JobModel.countDocuments({
+  async prove(
+    @Body({ required: true }) { TPreComputes, U, s }: JsonProofInput
+  ) {
+    const parsedInput: ProofInput = {
+      TPreComputes: parse(TPreComputes),
+      U: parse(U),
+      s: parse(s),
+    }
+    const job = await JobModel.create({ input: parsedInput })
+    return {
+      id: job.id,
+      position: await JobModel.countDocuments({
         status: JobStatus.scheduled,
         createdAt: { $lt: job.createdAt },
-      })
-    return { id: job._id, position: result.position || 0 }
+      }),
+    }
   }
+
   @Get('/:id')
-  async status(@Ctx() ctx: Context, @Params() { id }: ProofResultParams) {
+  async status(@Ctx() ctx: Context, @Params() { id }: ProofStatusParams) {
     const job = await JobModel.findById(id)
-    if (!job) return ctx.throw(notFound())
-
-    job.input = undefined
-    const result: { job: Job; position?: number } = { job }
-    if (job.status === JobStatus.scheduled)
-      result.position = await JobModel.countDocuments({
-        status: JobStatus.scheduled,
-        createdAt: { $lt: job.createdAt },
-      })
-
-    const { status, result: jobResult } = result.job
-    return { status, result: jobResult }
+    if (!job) {
+      return ctx.throw(notFound())
+    }
+    return {
+      status: job.status,
+      position:
+        job.status === JobStatus.scheduled
+          ? await JobModel.countDocuments({
+              status: JobStatus.scheduled,
+              createdAt: { $lt: job.createdAt },
+            })
+          : undefined,
+      result: job.result,
+    }
   }
 }

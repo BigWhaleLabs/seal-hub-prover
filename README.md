@@ -1,6 +1,6 @@
 # SealHub Prover code
 
-This repository is to be used as proof generator for SealHub
+Proof generator for SealHub.
 
 ## Installation and local launch
 
@@ -20,11 +20,11 @@ And you should be good to go! Feel free to fork and submit pull requests.
 
 ## Environment variables
 
-| Name     | Description                                                               |
-| -------- | ------------------------------------------------------------------------- |
-| `MONGO`  | (Optional) URL of the mongo database (default to mongodb://mongodb:27017) |
-| `PORT`   | (Optional) Port to run server on (defaults to 1337)                       |
-| `DOMAIN` | (Optional) Your domain for docker                                         |
+| Name     | Description                                                                  |
+| -------- | ---------------------------------------------------------------------------- |
+| `MONGO`  | _(Optional)_ URL of the mongo database (defaults to mongodb://mongodb:27017) |
+| `PORT`   | _(Optional)_ Port to run server on (defaults to 1337)                        |
+| `DOMAIN` | _(Optional)_ Your domain for docker                                          |
 
 Also, please, consider looking at `.env.sample`.
 

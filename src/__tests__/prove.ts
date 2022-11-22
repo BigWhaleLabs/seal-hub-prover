@@ -5,7 +5,7 @@ import { Mongoose } from 'mongoose'
 import { Server } from 'http'
 import { Wallet } from 'ethers'
 import runApp from '@/helpers/runApp'
-import runMongo from '@/helpers/mongo'
+import runMongo from '@/helpers/runMongo'
 
 jest.setTimeout(60000 * 10)
 

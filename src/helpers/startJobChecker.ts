@@ -5,15 +5,15 @@ import { cwd } from 'process'
 import { readFileSync } from 'fs'
 import { resolve } from 'path'
 import JobStatus from '@/models/JobStatus'
-import build, { generateInput } from '@/helpers/generateProof'
+import generateProof from '@/helpers/generateProof'
 
 const vKey = JSON.parse(
   readFileSync(
-    resolve(cwd(), './zkp/ECDSAChecker_verification_key.json')
+    resolve(cwd(), 'zkp/ECDSAChecker_verification_key.json')
   ).toString()
 )
 
-export default function startJobChecker() {
+export default function () {
   setInterval(checkAndRunJobs, 5 * 1000)
 }
 
@@ -71,8 +71,7 @@ async function runJob({ id, input }: DocumentType<Job>) {
   console.log('Generating witness and creating proof...')
   if (!input) throw new Error('Job input is missing')
 
-  const inputs = generateInput(input.signature, input.message)
-  const { proof, publicSignals } = await build(inputs)
+  const { proof, publicSignals } = await generateProof(input)
   console.log('Verifying proof...')
   const res = await snarkjs.groth16.verify(vKey, publicSignals, proof)
   if (!res) throw new Error('Proof verification failed')

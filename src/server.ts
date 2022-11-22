@@ -2,7 +2,7 @@ import 'module-alias/register'
 import 'source-map-support/register'
 
 import runApp from '@/helpers/runApp'
-import runMongo from '@/helpers/mongo'
+import runMongo from '@/helpers/runMongo'
 
 void (async () => {
   console.log('Starting mongo...')

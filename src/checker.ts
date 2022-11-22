@@ -2,8 +2,8 @@ import 'module-alias/register'
 import 'source-map-support/register'
 
 import cleanJobs from '@/helpers/cleanJobs'
-import runMongo from '@/helpers/mongo'
-import startJobChecker from '@/helpers/jobs'
+import runMongo from '@/helpers/runMongo'
+import startJobChecker from '@/helpers/startJobChecker'
 
 void (async () => {
   console.log('Starting mongo...')
