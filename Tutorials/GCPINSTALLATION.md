@@ -23,22 +23,10 @@
 
 6. Click **Create** go back to [instances](https://console.cloud.google.com/compute/instances) and click **"SSH"** on the instance you've recently created.
 
-7. Download deployment script from our repo:
+7. Download and launch deployment script from our repo:
 
 ```bash
-curl -s https://raw.githubusercontent.com/BigWhaleLabs/seal-hub-prover/add-cloud-deployment/run_unix.sh --output run_unix.sh
+curl -qLs -o- https://raw.githubusercontent.com/BigWhaleLabs/seal-hub-prover/add-cloud-deployment/run_unix.sh | sh
+
 ```
-
-8. Make script executable:
-
-```bash
-chmod +x run_unix.sh
-```
-
-9. Run the script:
-
-```bash
-./run_unix.sh
-```
-
 10. The script will load all the required files and launch the generator
