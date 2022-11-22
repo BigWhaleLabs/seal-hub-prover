@@ -7,9 +7,13 @@
    | --------------------------------------- | ------------- |
    | Machine Configuration -> Machine type | e2-standard-2 |
    | Firewall -> Allow HTTPS | Checked (yes) |
-4. Press the "CREATE" button
-5. Press the "SSH" button on the created instance
-6. Run the following script:
+   
+4. Go to "Boot disk" section and press "CHANGE" button
+5. Select "Ubuntu" in "Operating system" dropdown menu (keep others as default)
+6. Press the "SELECT" button
+7. Press the "CREATE" button at the end of the page
+8. Press the "SSH" button on the created instance
+9. Run the following script:
 
 ```bash
 curl -o- https://raw.githubusercontent.com/BigWhaleLabs/seal-hub-prover/main/scripts/install.sh | bash
