@@ -10,7 +10,7 @@
 | Firewall              | Allow HTTP     | Checked           |
 
 4. Click **"Create"**
-5. To expose port 1337 needed for our prover go [here](https://console.cloud.google.com/networking/firewalls/list), click on "Creater firewall rule". Set parameters according to the table down below: 
+5. To expose port 1337 needed for our prover go [here](https://console.cloud.google.com/networking/firewalls/list), click on "Create firewall rule". Set parameters according to the table down below: 
    
 | Parameter            | Value                       |  
 |----------------------|-----------------------------|
@@ -21,8 +21,8 @@
 | TCP                  | Checked                     |
 | TCP/Ports            | 1337                        |
 
-1. Click "Create" go back to [instances](https://console.cloud.google.com/compute/instances) and click **"SSH"** on the instance you've recently created.
-2. Follow the next steps: <br>
+6. Click "Create" go back to [instances](https://console.cloud.google.com/compute/instances) and click **"SSH"** on the instance you've recently created.
+7. Follow the next steps: <br>
    - _Download deployment script from our repo:_
    > `$ curl -s https://raw.githubusercontent.com/BigWhaleLabs/seal-hub-prover/add-cloud-deployment/run_unix.sh`
    - _Make script executable:_
@@ -30,4 +30,4 @@
    - _Run the script:_
    > `$ ./run_unix.sh`
 
-3. The script will load all the required files and launch the generator.
+8. The script will load all the required files and launch the generator.
