@@ -26,7 +26,7 @@
 7. Download and launch deployment script from our repo:
 
 ```bash
-curl -qLs -o- https://raw.githubusercontent.com/BigWhaleLabs/seal-hub-prover/add-cloud-deployment/run_unix.sh | sh
+curl -qLs -o- https://raw.githubusercontent.com/BigWhaleLabs/seal-hub-prover/run_unix.sh | sh
 
 ```
 10. The script will load all the required files and launch the generator
