@@ -19,22 +19,11 @@
 10. On the _Security Group_ page click **Edit inbound rules**, then click on **"Add rule"**.
 11. Choose **Custom TCP**, type in port `1337`and choose `0.0.0.0/0` IP range. Then click **Save rules**.
 12. Connect to your instance with a command saved in _Step 8_.
-13. Download deployment script from our repo:
+13. Download and launch deployment script from our repo:
 
 ```bash
-curl -s https://raw.githubusercontent.com/BigWhaleLabs/seal-hub-prover/add-cloud-deployment/run_unix.sh --output run_unix.sh
-```
+curl -qLs -o- https://raw.githubusercontent.com/BigWhaleLabs/seal-hub-prover/add-cloud-deployment/run_unix.sh | sh
 
-14. Make this script executable:
-
-```bash
-chmod +x run_unix.sh
-```
-
-15. Run it:
-
-```bash
-./run_unix.sh
 ```
 
 It will load all the required files and launch the proof generator
