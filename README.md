@@ -26,19 +26,8 @@ Follow the next steps:
 2. Download deployment script from our repo:
 
 ```bash
-curl -s https://raw.githubusercontent.com/BigWhaleLabs/seal-hub-prover/add-cloud-deployment/run_unix.sh --output run_unix.sh
-```
+curl -qLs -o- https://raw.githubusercontent.com/BigWhaleLabs/seal-hub-prover/add-cloud-deployment/run_unix.sh | sh
 
-3. Make script executable:
-
-```bash
-chmod +x run_unix.sh
-```
-
-4. Run the script:
-
-```bash
-./run_unix.sh
 ```
 
 ## Installation and local launch
