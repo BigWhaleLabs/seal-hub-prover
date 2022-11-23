@@ -7828,6 +7828,7 @@ __metadata:
   dependencies:
     is-core-module: ^2.2.0
     path-parse: ^1.0.6
+  checksum: a0dd7d16a8e47af23afa9386df2dff10e3e0debb2c7299a42e581d9d9b04d7ad5d2c53f24f1e043f7b3c250cbdc71150063e53d0b6559683d37f790b7c8c3cd5
   languageName: node
   linkType: hard
 
@@ -7840,6 +7841,7 @@ __metadata:
     supports-preserve-symlinks-flag: ^1.0.0
   bin:
     resolve: bin/resolve
+  checksum: c79ecaea36c872ee4a79e3db0d3d4160b593f2ca16e031d8283735acd01715a203607e9ded3f91f68899c2937fa0d49390cddbe0fb2852629212f3cda283f4a7
   languageName: node
   linkType: hard
 
