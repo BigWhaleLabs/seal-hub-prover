@@ -12,5 +12,5 @@ export default async function () {
       $unset: { input: true },
     })
   }
-  console.log('Cancled all jobs')
+  console.log('Canceled all jobs')
 }

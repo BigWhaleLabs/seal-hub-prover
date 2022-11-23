@@ -7,6 +7,8 @@ import JobStatus from '@/models/JobStatus'
 import JsonProofInput from '@/validators/JsonProofInput'
 import ProofInput from '@/validators/ProofInput'
 import ProofStatusParams from '@/validators/ProofStatusParams'
+import env from '@/helpers/env'
+import generateAndVerifyProof from '@/helpers/generateAndVerifyProof'
 
 @Controller('/prove')
 export default class ProveController {
@@ -19,6 +21,7 @@ export default class ProveController {
       U: parse(U),
       s: parse(s),
     }
+    if (!env.MONGO) return await generateAndVerifyProof({ input: parsedInput })
     const job = await JobModel.create({ input: parsedInput })
     return {
       id: job.id,
@@ -31,10 +34,11 @@ export default class ProveController {
 
   @Get('/:id')
   async status(@Ctx() ctx: Context, @Params() { id }: ProofStatusParams) {
+    if (!env.MONGO) return
+
     const job = await JobModel.findById(id)
-    if (!job) {
-      return ctx.throw(notFound())
-    }
+    if (!job) return ctx.throw(notFound())
+
     return {
       status: job.status,
       position:

@@ -1,6 +1,5 @@
 import * as mongoose from 'mongoose'
-import env from '@/helpers/env'
 
-export default function (mongoUrl = env.MONGO) {
+export default function (mongoUrl: string) {
   return mongoose.connect(mongoUrl)
 }

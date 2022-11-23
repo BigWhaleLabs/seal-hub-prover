@@ -1,0 +1,35 @@
+services:
+  backend-development:
+    build:
+      context: .
+      dockerfile: Dockerfile.backend.development
+    restart: unless-stopped
+    ports:
+      - 1337:1337
+    volumes:
+      - ./src:/usr/src
+    environment:
+      - ENVIRONMENT=development
+    profiles:
+      - development
+    expose:
+      - 1337
+    hostname: backend
+  backend-production:
+    build:
+      context: .
+      dockerfile: Dockerfile.backend.production
+    restart: unless-stopped
+    environment:
+      - ENVIRONMENT=production
+    profiles:
+      - production
+      - production-no-dns
+    expose:
+      - 1337
+    hostname: backend
+
+volumes:
+  caddy_data:
+  caddy_conf:
+  db:

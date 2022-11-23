@@ -1,17 +1,8 @@
-import * as snarkjs from 'snarkjs'
 import { DocumentType } from '@typegoose/typegoose'
 import { Job, JobModel } from '@/models/Job'
-import { cwd } from 'process'
-import { readFileSync } from 'fs'
-import { resolve } from 'path'
-import JobStatus from '@/models/JobStatus'
-import generateProof from '@/helpers/generateProof'
 
-const vKey = JSON.parse(
-  readFileSync(
-    resolve(cwd(), 'zk/ECDSAChecker_verification_key.json')
-  ).toString()
-)
+import JobStatus from '@/models/JobStatus'
+import generateAndVerifyProof from '@/helpers/generateAndVerifyProof'
 
 export default function () {
   setInterval(checkAndRunJobs, 5 * 1000)
@@ -66,16 +57,10 @@ async function checkAndRunJobs() {
   }
 }
 
-async function runJob({ id, input }: DocumentType<Job>) {
+function runJob({ id, input }: DocumentType<Job>) {
   console.log(`Running job ${id}...`)
   console.log('Generating witness and creating proof...')
   if (!input) throw new Error('Job input is missing')
 
-  const { proof, publicSignals } = await generateProof(input)
-  console.log('Verifying proof...')
-  const res = await snarkjs.groth16.verify(vKey, publicSignals, proof)
-  if (!res) throw new Error('Proof verification failed')
-
-  console.log(`Proof verified for job ${id}`)
-  return { proof, publicSignals }
+  return generateAndVerifyProof({ jobId: id, input })
 }
