@@ -34,12 +34,12 @@ describe('Prove endpoint', () => {
     })
   })
 
-  it('should return valid proof for / request', async () => {
+  it('should return valid job', async () => {
     const message = 'Signature for SealHub'
     const wallet = Wallet.createRandom()
     const signature = await wallet.signMessage(message)
     await request(server)
-      .post('/')
+      .post('/prove')
       .send({ signature: signature, message })
       .expect(200)
   })
