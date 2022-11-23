@@ -1,6 +1,5 @@
 FROM node:latest
 
 EXPOSE 1337
-WORKDIR /
 
 CMD yarn docker-start-production
