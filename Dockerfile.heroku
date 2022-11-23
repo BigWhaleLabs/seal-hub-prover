@@ -1,5 +1,5 @@
 
-FROM node:lates
+FROM node:latest
 
 EXPOSE 8080
 
