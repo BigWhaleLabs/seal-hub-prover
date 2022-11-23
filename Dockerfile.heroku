@@ -1,0 +1,5 @@
+FROM node:latest
+
+EXPOSE 1337
+
+CMD yarn && yarn docker-start-production
