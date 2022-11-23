@@ -1,4 +1,2 @@
-build:
-  docker:
-    web: Dockerfile.backend.production
-    mongodb: Dockerfile.mongodb
+run:
+  web: yarn docker-start-production
