@@ -16,6 +16,7 @@
     "docker-start-development": "docker compose --profile=development up",
     "docker-start-production": "docker compose --profile=production up",
     "docker-start-production-no-dns": "docker compose --profile=production-no-dns up",
+    "docker-start-production-heroku": "docker compose -f docker-compose-heroku.yml --profile=production up",
     "start": "concurrently 'yarn develop-server' 'yarn develop-checker'",
     "test": "yarn jest --forceExit --runInBand",
     "pretty": "prettier --check src",

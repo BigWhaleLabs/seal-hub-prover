@@ -1,0 +1,29 @@
+services:
+  # Mongo
+  mongodb:
+    image: mongo:5.0.6
+    restart: unless-stopped
+    ports:
+      - 27017:27017
+    volumes:
+      - db:/data/db
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile.backend.production
+    restart: unless-stopped
+    depends_on:
+      - mongodb
+    environment:
+      - ENVIRONMENT=production
+    profiles:
+      - production
+      - production-no-dns
+    expose:
+      - 1337
+    hostname: web
+
+volumes:
+  caddy_data:
+  caddy_conf:
+  db:
