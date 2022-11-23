@@ -13,5 +13,8 @@
   "env": {},
   "scripts": {
     "start": "docker-compose --profile=production up"
+  },
+  "engines": {
+    "node": "18.x"
   }
 }
