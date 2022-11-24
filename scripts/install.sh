@@ -23,7 +23,7 @@ answer_regex="^(localhost|[a-z0-9-]+(\.[a-z0-9-]+))$"
 if [[ $answer =~ $answer_regex ]]
 then
     echo "DOMAIN=$answer" >> .env
-    yarn docker-start-production
+    sudo docker compose --profile=production up
 else 
-    yarn docker-start-production-no-dns
+    sudo docker compose --profile=production-no-dns up
 fi
