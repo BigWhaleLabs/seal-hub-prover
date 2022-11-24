@@ -28,9 +28,9 @@ then
   sleep 2
   url=$(sudo docker logs proxy-lt | grep -oP 'https://\K.*')
   echo "==============================="
-  echo "Your SealHub Prover is running! Use the following URL at https://hub.sealc.red:"
+  echo "Your SealHub Prover is running! It might take a minute for it to set everything up though. Use the following URL at https://hub.sealc.red:"
   echo "$url"
-  echo "You can safelly close this window now. The prover will keep running"
+  echo "You can safelly close this window now. The prover will keep running."
   echo "Make sure to delete the cloud instance when you are done so that you don't get a surprise bill!"
   echo "==============================="
 else 
@@ -43,7 +43,7 @@ else
   # Start production profile
   sudo docker compose --profile=production up -d
   echo "==============================="
-  echo "Your SealHub Prover is running! Use the following URL at https://hub.sealc.red:"
+  echo "Your SealHub Prover is running! It might take a minute for it to set everything up though. Use the following URL at https://hub.sealc.red:"
   echo "$domain"
   echo "You can safelly close this window now. The prover will keep running"
   echo "Make sure to delete the cloud instance when you are done so that you don't get a surprise bill!"
