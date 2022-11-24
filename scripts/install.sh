@@ -34,5 +34,10 @@ else
   read
   # Start production profile
   sudo docker compose --profile=production up -d
-  sudo docker logs proxy-caddy
+  echo "==============================="
+  echo "Your SealHub Prover is running! Use the following URL at https://hub.sealc.red:"
+  echo "$domain"
+  echo "You can safelly close this window now. The prover will keep running"
+  echo "Make sure to delete the cloud instance when you are done so that you don't get a surprise bill!"
+  echo "==============================="
 fi
