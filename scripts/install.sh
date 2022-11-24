@@ -17,4 +17,4 @@ sudo apt-get install -y git docker-ce docker-ce-cli containerd.io docker-compose
 git clone https://github.com/BigWhaleLabs/seal-hub-prover.git
 cd seal-hub-prover
 # Start SealHub Proof Generator
-sudo docker compose --profile=production-no-dns up
+sudo docker compose --profile=production-no-dns up -d && sudo docker logs obss-proxy-lt
