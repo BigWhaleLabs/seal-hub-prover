@@ -23,7 +23,16 @@ read domain
 if [ "$1" == "--non-interactive" ] || [ -z "$domain" ]
 then
   # Start production profile without custom domain
-  sudo docker compose --profile=production-no-dns up -d && sudo docker logs proxy-lt
+  sudo docker compose --profile=production-no-dns up -d
+  echo "Waiting 10 seconds for the proxy to start..."
+  sleep 10
+  url=$(sudo docker logs proxy-lt | grep -oP 'https://\K.*')
+  echo "==============================="
+  echo "Your SealHub Prover is running! It might take a minute for it to set everything up though. Use the following URL at https://hub.sealc.red:"
+  echo "$url"
+  echo "You can safelly close this window now. The prover will keep running."
+  echo "Make sure to delete the cloud instance when you are done so that you don't get a surprise bill!"
+  echo "==============================="
 else 
   # Put the domain name in the .env
   echo "DOMAIN=$domain" >> .env
@@ -32,5 +41,11 @@ else
   echo "Please create an A record for $domain DNS pointing at $ip and press return when ready"
   read
   # Start production profile
-  sudo docker compose --profile=production up -d && sudo docker logs proxy-caddy
+  sudo docker compose --profile=production up -d
+  echo "==============================="
+  echo "Your SealHub Prover is running! It might take a minute for it to set everything up though. Use the following URL at https://hub.sealc.red:"
+  echo "$domain"
+  echo "You can safelly close this window now. The prover will keep running"
+  echo "Make sure to delete the cloud instance when you are done so that you don't get a surprise bill!"
+  echo "==============================="
 fi
