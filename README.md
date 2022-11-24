@@ -10,7 +10,7 @@ Visit [this tutorial](./docs/gcp.md) for Google Cloud installation
 
 Visit [this tutorial](./docs/aws.md) for Amazon AWS installation
 
-## Deploying to any VPS with `apt-get` installed
+## Deploying to any VPS with `apt-get` and `bash` installed
 
 > ⚠️ Make sure the machine has at least 8GB of RAM
 
