@@ -1,4 +1,4 @@
-import { BigIntOrString } from 'models/BigIntOrString'
+import BigIntOrString from 'models/BigIntOrString'
 
 export default class {
   TPreComputes!: BigIntOrString[][][][]

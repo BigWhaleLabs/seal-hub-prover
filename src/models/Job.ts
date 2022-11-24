@@ -1,10 +1,10 @@
-import { BigIntOrString } from '@/models/BigIntOrString'
 import {
   Severity,
   getModelForClass,
   modelOptions,
   prop,
 } from '@typegoose/typegoose'
+import BigIntOrString from '@/models/BigIntOrString'
 import JobStatus from '@/models/JobStatus'
 import ProofResult from '@/models/ProofResult'
 

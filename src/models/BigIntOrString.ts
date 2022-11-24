@@ -1,1 +1,3 @@
-export type BigIntOrString = bigint | string
+type BigIntOrString = bigint | string
+
+export default BigIntOrString
