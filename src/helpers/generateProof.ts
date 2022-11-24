@@ -1,5 +1,5 @@
 import * as snarkjs from 'snarkjs'
-import { ProofInput } from '@/models/ProofInput'
+import ProofInput from '@/models/ProofInput'
 import ProofResult from '@/models/ProofResult'
 
 export default function (input: ProofInput): Promise<ProofResult> {
