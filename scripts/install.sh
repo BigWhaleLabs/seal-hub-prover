@@ -23,7 +23,8 @@ read domain
 if [ -z "$domain" ]
 then
   # Start production profile without custom domain
-  sudo docker compose --profile=production-no-dns up -d && sudo docker logs proxy-lt
+  sudo docker compose --profile=production-no-dns up -d
+  sudo docker logs proxy-lt
 else 
   # Put the domain name in the .env
   echo "DOMAIN=$domain" >> .env
@@ -32,5 +33,6 @@ else
   echo "Please create an A record for $domain DNS pointing at $ip and press return when ready"
   read
   # Start production profile
-  sudo docker compose --profile=production up -d && sudo docker logs proxy-caddy
+  sudo docker compose --profile=production up -d
+  sudo docker logs proxy-caddy
 fi
