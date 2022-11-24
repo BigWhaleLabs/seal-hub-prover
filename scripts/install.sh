@@ -21,5 +21,13 @@ sudo npm i -g yarn
 git clone https://github.com/BigWhaleLabs/seal-hub-prover.git
 cd seal-hub-prover 
 # Install dependencies and start SealHub Proof Generator
-yarn
-sudo yarn docker-start-production-no-dns
+echo 'If you have a custom domain, enter it here; if not, just press "return" and leave it blank'
+read answer
+answer_regex="^(localhost|[a-z0-9-]+(\.[a-z0-9-]+))$"
+if [[ $answer =~ $answer_regex ]]
+then
+    echo "DOMAIN=$answer" >> .env
+    yarn docker-start-production
+else 
+    yarn docker-start-production-no-dns
+fi
