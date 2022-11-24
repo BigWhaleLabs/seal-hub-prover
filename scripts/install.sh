@@ -20,7 +20,7 @@ cd seal-hub-prover
 echo 'If you have a custom domain, enter it here; if not, just press "return" and leave it blank'
 # Read the domain from the user
 read domain
-if [ $* == *--non-interactive* ] || [ -z $domain ]
+if [ $1 == "--non-interactive" ] || [ -z $domain ]
 then
   # Start production profile without custom domain
   sudo docker compose --profile=production-no-dns up -d && sudo docker logs proxy-lt
