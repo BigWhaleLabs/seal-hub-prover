@@ -24,8 +24,8 @@ if [ -z "$domain" ]
 then
   # Start production profile without custom domain
   sudo docker compose --profile=production-no-dns up -d
-  echo "Waiting for the proxy to start..."
-  sleep 2
+  echo "Waiting 10 seconds for the proxy to start..."
+  sleep 10
   url=$(sudo docker logs proxy-lt | grep -oP 'https://\K.*')
   echo "==============================="
   echo "Your SealHub Prover is running! It might take a minute for it to set everything up though. Use the following URL at https://hub.sealc.red:"
