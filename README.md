@@ -32,6 +32,8 @@ wget -qO- https://raw.githubusercontent.com/BigWhaleLabs/seal-hub-prover/main/sc
 
 Note the prover URL that will be displayed in the end, this is the URL you will use at [SealHub](https://hub.sealc.red)
 
+> ⚠️ Don't forget to delete the instance after you generated the ZK proof so that you don't get a surprise bill from GCP
+
 ## Local launch
 
 ### Without Docker
