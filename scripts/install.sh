@@ -10,7 +10,7 @@ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o 
 # Add Docker repository to dpkg
 echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 # Add Node.js APT repository
-curl -sL https://deb.nodesource.com/setup_18.x | sudo -E bash -
+curl -sL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
 # Refresh package list once again after adding new repo
 sudo apt-get update
 # Install Docker and required packages
@@ -19,7 +19,7 @@ sudo apt-get install -y git nodejs npm docker-ce docker-ce-cli containerd.io doc
 sudo npm i -g yarn
 # Clone SealHub Prover repository
 git clone https://github.com/BigWhaleLabs/seal-hub-prover.git
-cd seal-hub-prover 
+cd seal-hub-prover
 # Install dependencies and start SealHub Proof Generator
 yarn
 sudo yarn docker-start-production-no-dns
