@@ -18,17 +18,19 @@ git clone https://github.com/BigWhaleLabs/seal-hub-prover.git
 cd seal-hub-prover 
 # Ask if user has a custom domain, if he doesn't launch the prover without DNS, if he does take the name from the user and put it to the .env
 echo 'If you have a custom domain, enter it here; if not, just press "return" and leave it blank'
-# Reads the answer from the user and compares it with the regex string
-read answer
-answer_regex="^(localhost|[a-z0-9-]+(\.[a-z0-9-]+))$"
-if [[ $answer =~ $answer_regex ]]
-# Flushes .env in case there's any old domains in the file
-> .env
+# Read the domain from the user
+read domain
+if [ -z "$domain" ]
 then
-  # Puts the domain name in the .env and starts production profile of Docker
-  echo "DOMAIN=$answer" >> .env
-  sudo docker compose --profile=production up -d && sudo docker logs proxy-caddy
-else 
-  # Starts production profile of Docker without custom domain
+  # Start production profile without custom domain
   sudo docker compose --profile=production-no-dns up -d && sudo docker logs proxy-lt
+else 
+  # Put the domain name in the .env
+  echo "DOMAIN=$domain" >> .env
+  # Ask the user to point DNS at the IP
+  ip=$(curl -s ifconfig.me)
+  echo "Please create an A record for $domain DNS pointing at $ip and press return when ready"
+  read
+  # Start production profile
+  sudo docker compose --profile=production up -d && sudo docker logs proxy-caddy
 fi
