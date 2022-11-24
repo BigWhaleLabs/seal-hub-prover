@@ -25,10 +25,10 @@ if [[ $answer =~ $answer_regex ]]
 # Flushes .env in case there's any old domains in the file
 > .env
 then
-    # Puts the domain name in the .env and starts production profile of Docker
-    echo "DOMAIN=$answer" >> .env
-    sudo docker compose --profile=production up -d && sudo docker logs proxy-caddy
+  # Puts the domain name in the .env and starts production profile of Docker
+  echo "DOMAIN=$answer" >> .env
+  sudo docker compose --profile=production up -d && sudo docker logs proxy-caddy
 else 
-    # Starts production profile of Docker without custom domain
-    sudo docker compose --profile=production-no-dns up -d && sudo docker logs proxy-lt
+  # Starts production profile of Docker without custom domain
+  sudo docker compose --profile=production-no-dns up -d && sudo docker logs proxy-lt
 fi
