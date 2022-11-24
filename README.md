@@ -10,18 +10,18 @@ Visit [this tutorial](./docs/gcp.md) for Google Cloud installation
 
 Visit [this tutorial](./docs/aws.md) for Amazon AWS installation
 
-## Deploying to any VPS with `apt-get` installed
+## Deploying to any VPS with `apt-get` and `bash` installed
 
 > ⚠️ Make sure the machine has at least 8GB of RAM
 
 Run the following cURL or Wget command to download and launch the prover:
 
 ```bash
-sh <(curl -o- https://raw.githubusercontent.com/BigWhaleLabs/seal-hub-prover/main/scripts/install.sh)
+bash <(curl -o- https://raw.githubusercontent.com/BigWhaleLabs/seal-hub-prover/main/scripts/install.sh)
 ```
 
 ```bash
-sh <(wget -qO- https://raw.githubusercontent.com/BigWhaleLabs/seal-hub-prover/main/scripts/install.sh)
+bash <(wget -qO- https://raw.githubusercontent.com/BigWhaleLabs/seal-hub-prover/main/scripts/install.sh)
 ```
 
 Note the prover URL that will be displayed in the end, this is the URL you will use at [SealHub](https://hub.sealc.red)
