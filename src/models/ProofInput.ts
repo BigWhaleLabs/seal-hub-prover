@@ -1,6 +1,6 @@
-import { BigIntOrString } from 'models/BigIntOrString'
+import BigIntOrString from 'models/BigIntOrString'
 
-export interface ProofInput {
+export default interface ProofInput {
   TPreComputes: BigIntOrString[][][][]
   U: BigIntOrString[][]
   s: BigIntOrString[][]
