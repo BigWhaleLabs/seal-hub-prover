@@ -15,7 +15,7 @@
 9. Run the following script:
 
 ```bash
-bash <(curl -o- https://raw.githubusercontent.com/BigWhaleLabs/seal-hub-prover/main/scripts/install.sh)
+sh <(curl -o- https://raw.githubusercontent.com/BigWhaleLabs/seal-hub-prover/main/scripts/install.sh)
 ```
 
 7. Note the prover URL that will be displayed in the end, this is the URL you will use at [SealHub](https://hub.sealc.red)
