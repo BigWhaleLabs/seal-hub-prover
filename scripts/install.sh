@@ -14,7 +14,7 @@ curl -sL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
 # Refresh package list once again after adding new repo
 sudo apt-get update
 # Install Docker and required packages
-sudo apt-get install -y git nodejs npm docker-ce docker-ce-cli containerd.io docker-compose-plugin
+sudo apt-get install -y git nodejs docker-ce docker-ce-cli containerd.io docker-compose-plugin
 # Install yarn
 sudo npm i -g yarn
 # Clone SealHub Prover repository
