@@ -7,8 +7,8 @@
    | --------------------------------------- | ------------- |
    | Machine Configuration -> Machine type | e2-standard-2 |
    | Firewall -> Allow HTTPS | Checked (yes) |
-4. Go to "Boot disk" section and press "CHANGE" button
-5. Select "Ubuntu" in "Operating system" dropdown menu (keep other options as default)
+4. Go to the "Boot disk" section and press the "CHANGE" button
+5. In the "Operating system" dropdown menu select "Ubuntu" (keep other options as default)
 6. Press the "SELECT" button
 7. Press the "CREATE" button at the end of the page
 8. Press the "SSH" button on the created instance
