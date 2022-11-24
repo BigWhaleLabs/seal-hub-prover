@@ -2,21 +2,15 @@
 
 The centralized prover that is used to generate ZK proofs for SealHub
 
-## Deploying to cloud
-
-[![Deploy to DO](https://www.deploytodo.com/do-btn-blue.svg)](https://cloud.digitalocean.com/apps/new?repo=https://github.com/BigWhaleLabs/seal-hub-prover/tree/main)
-
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/BigWhaleLabs/seal-hub-prover/tree/main)
-
-## Google Cloud
+## Deploying to Google Cloud
 
 Visit [this tutorial](./docs/gcp.md) for Google Cloud installation
 
-## Amazon AWS
+## Deploying to AWS
 
 Visit [this tutorial](./docs/aws.md) for Amazon AWS installation
 
-## Any VPS with `apt-get` installed
+## Deploying to any VPS with `apt-get` installed
 
 > ⚠️ Make sure the machine has at least 8GB of RAM
 
@@ -31,6 +25,8 @@ wget -qO- https://raw.githubusercontent.com/BigWhaleLabs/seal-hub-prover/main/sc
 ```
 
 Note the prover URL that will be displayed in the end, this is the URL you will use at [SealHub](https://hub.sealc.red)
+
+> ⚠️ Don't forget to delete the instance after you generated the ZK proof so that you don't get a surprise bill
 
 ## Local launch
 
