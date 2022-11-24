@@ -16,14 +16,19 @@ sudo apt-get install -y git docker-ce docker-ce-cli containerd.io docker-compose
 # Clone SealHub Prover repository
 git clone https://github.com/BigWhaleLabs/seal-hub-prover.git
 cd seal-hub-prover 
-# Install dependencies and start SealHub Proof Generator
+# Ask if user has a custom domain, if he doesn't launch the prover without DNS, if he does take the name from the user and put it to the .env
 echo 'If you have a custom domain, enter it here; if not, just press "return" and leave it blank'
+# Reads the answer from the user and compares it with the regex string
 read answer
 answer_regex="^(localhost|[a-z0-9-]+(\.[a-z0-9-]+))$"
 if [[ $answer =~ $answer_regex ]]
+# Flushes .env in case there's any old domains in the file
+> .env
 then
+    # Puts the domain name in the .env and starts production profile of Docker
     echo "DOMAIN=$answer" >> .env
     sudo docker compose --profile=production up
 else 
+    # Starts production profile of Docker without custom domain
     sudo docker compose --profile=production-no-dns up
 fi
