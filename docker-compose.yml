@@ -43,7 +43,7 @@ services:
     hostname: backend
   # Reverse proxy
   caddy:
-    container_name: obss-proxy-caddy
+    container_name: proxy-caddy
     image: caddy:2-alpine
     restart: unless-stopped
     command: 'caddy reverse-proxy --from ${DOMAIN} --to http://backend:1337'
@@ -58,7 +58,7 @@ services:
     profiles:
       - production
   localtunnel:
-    container_name: obss-proxy-lt
+    container_name: proxy-lt
     image: node:18
     restart: unless-stopped
     command: 'npx localtunnel --port 1337 --local-host backend'

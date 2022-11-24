@@ -27,8 +27,8 @@ if [[ $answer =~ $answer_regex ]]
 then
     # Puts the domain name in the .env and starts production profile of Docker
     echo "DOMAIN=$answer" >> .env
-    sudo docker compose --profile=production up && sudo docker logs obss-proxy-lt
+    sudo docker compose --profile=production up -d && sudo docker logs proxy-caddy
 else 
     # Starts production profile of Docker without custom domain
-    sudo docker compose --profile=production-no-dns up -d && sudo docker logs obss-proxy-lt
+    sudo docker compose --profile=production-no-dns up -d && sudo docker logs proxy-lt
 fi
