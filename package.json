@@ -38,7 +38,10 @@
     "snarkjs": "^0.5.0"
   },
   "devDependencies": {
+    "@ethereumjs/util": "^8.0.2",
     "@typegoose/typegoose": "^9.12.1",
+    "@types/bn.js": "^5.1.1",
+    "@types/elliptic": "^6.4.14",
     "@types/jest": "^29.2.3",
     "@types/json-bigint": "^1.0.1",
     "@types/koa": "^2.13.5",
@@ -50,7 +53,9 @@
     "@typescript-eslint/eslint-plugin": "^5.44.0",
     "@typescript-eslint/parser": "^5.44.0",
     "axios-mock-adapter": "^1.21.2",
+    "bn.js": "^5.2.1",
     "concurrently": "^7.6.0",
+    "elliptic": "^6.5.4",
     "eslint": "^8.28.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-import": "^2.26.0",
