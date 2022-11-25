@@ -4,6 +4,11 @@ import { MongoMemoryServer } from 'mongodb-memory-server'
 import { Mongoose } from 'mongoose'
 import { Server } from 'http'
 import { Wallet } from 'ethers'
+import {
+  createMessage,
+  generateSignatureInputs,
+} from '@big-whale-labs/seal-hub-kit'
+import { stringify } from 'json-bigint'
 import runApp from '@/helpers/runApp'
 import runMongo from '@/helpers/runMongo'
 
@@ -35,12 +40,23 @@ describe('Prove endpoint', () => {
   })
 
   it('should return valid job', async () => {
-    const message = 'Signature for SealHub'
     const wallet = Wallet.createRandom()
+    const message = createMessage(wallet.address)
     const signature = await wallet.signMessage(message)
+    const input = generateSignatureInputs(signature, message)
+    const data = {} as {
+      TPreComputes: string
+      U: string
+      s: string
+    }
+    Object.entries(input).forEach(([key, value]) => {
+      data[key as keyof typeof data] = stringify(value)
+    })
     await request(server)
       .post('/prove')
-      .send({ signature: signature, message })
+      .attach('U', Buffer.from(data.U))
+      .attach('TPreComputes', Buffer.from(data.TPreComputes))
+      .attach('s', Buffer.from(data.s))
       .expect(200)
   })
 })

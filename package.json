@@ -38,6 +38,7 @@
     "snarkjs": "^0.5.0"
   },
   "devDependencies": {
+    "@big-whale-labs/seal-hub-kit": "^0.0.1",
     "@typegoose/typegoose": "^9.12.1",
     "@types/jest": "^29.2.3",
     "@types/json-bigint": "^1.0.1",
