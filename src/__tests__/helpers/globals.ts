@@ -9,10 +9,6 @@ class Globals {
   mongoServer?: MongoMemoryServer
   mongoose?: Mongoose
 
-  constructor() {
-    void this.getNewGlobals()
-  }
-
   async getNewGlobals() {
     this.mongoServer = await MongoMemoryServer.create()
     this.mongoose = await runMongo(await this?.mongoServer.getUri())
