@@ -1,39 +1,29 @@
 import * as request from 'supertest'
 import * as shutdown from 'http-graceful-shutdown'
-import { MongoMemoryServer } from 'mongodb-memory-server'
-import { Mongoose } from 'mongoose'
-import { Server } from 'http'
 import { Wallet } from 'ethers'
 import {
   createMessage,
   generateSignatureInputs,
 } from '@big-whale-labs/seal-hub-kit'
 import { stringify } from 'json-bigint'
-import runApp from '@/helpers/runApp'
-import runMongo from '@/helpers/runMongo'
+import globals from '@/__tests__/helpers/globals'
 
 jest.setTimeout(60000 * 10)
 
 describe('Prove endpoint', () => {
-  let server: Server
-  let mongoServer: MongoMemoryServer
-  let mongoose: Mongoose
-
   beforeAll(async () => {
-    mongoServer = await MongoMemoryServer.create()
-    mongoose = await runMongo(await mongoServer.getUri())
-    server = await runApp()
+    await globals.getNewGlobals()
   })
 
   beforeEach(async () => {
-    await mongoose.connection.db.dropDatabase()
+    await globals?.mongoose?.connection.db.dropDatabase()
   })
 
   afterAll(async () => {
-    await shutdown(server)
-    await mongoServer.stop()
+    await shutdown(globals.server)
+    await globals.mongoServer?.stop()
     return new Promise<void>((resolve, reject) => {
-      server.close((err) => {
+      globals.server?.close((err) => {
         err ? reject(err) : resolve()
       })
     })
@@ -52,7 +42,7 @@ describe('Prove endpoint', () => {
     Object.entries(input).forEach(([key, value]) => {
       data[key as keyof typeof data] = stringify(value)
     })
-    await request(server)
+    await request(globals?.server)
       .post('/prove')
       .attach('U', Buffer.from(data.U))
       .attach('TPreComputes', Buffer.from(data.TPreComputes))
