@@ -1,7 +1,8 @@
-import BigIntOrString from 'models/BigIntOrString'
-
 export default interface ProofInput {
-  TPreComputes: BigIntOrString[][][][]
-  U: BigIntOrString[][]
-  s: BigIntOrString[][]
+  U: string[][]
+  s: string[]
+  scalarForT: string[]
+  TPrecomputes: string[][][][]
+  T: string[][]
+  scalarForU: string[]
 }

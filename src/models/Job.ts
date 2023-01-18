@@ -4,8 +4,8 @@ import {
   modelOptions,
   prop,
 } from '@typegoose/typegoose'
-import BigIntOrString from '@/models/BigIntOrString'
 import JobStatus from '@/models/JobStatus'
+import ProofInput from '@/models/ProofInput'
 import ProofResult from '@/models/ProofResult'
 
 @modelOptions({
@@ -20,13 +20,11 @@ export class Job {
   })
   status!: JobStatus
   @prop({ _id: false, allowMixed: Severity.ALLOW })
-  input?: {
-    TPreComputes: BigIntOrString[][][][]
-    U: BigIntOrString[][]
-    s: BigIntOrString[][]
-  }
+  input?: ProofInput
   @prop({ allowMixed: Severity.ALLOW })
-  result?: ProofResult
+  ecdsaResult?: ProofResult
+  @prop({ allowMixed: Severity.ALLOW })
+  uPrecomputesResult?: ProofResult
 
   // Mongo fields
   createdAt!: Date

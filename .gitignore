@@ -4,6 +4,7 @@ node_modules
 dist
 zk/*
 !zk/.gitkeep
+.DS_Store
 
 # yarn
 .pnp.*
