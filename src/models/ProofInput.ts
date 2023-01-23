@@ -4,5 +4,5 @@ export default interface ProofInput {
   scalarForT: string[]
   TPrecomputes: string[][][][]
   T: string[][]
-  scalarForU: string[]
+  rInv: string[]
 }

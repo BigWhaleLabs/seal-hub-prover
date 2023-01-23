@@ -17,7 +17,7 @@ export default async function (input: ProofInput) {
   const uPrecomputesResult: ProofResult = await snarkjs.groth16.fullProve(
     {
       U: input.U,
-      scalarForU: input.scalarForU,
+      rInv: input.rInv,
     },
     './zk/UPrecomputesChecker.wasm',
     './zk/UPrecomputesChecker_final.zkey'
