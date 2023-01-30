@@ -11,17 +11,11 @@ import ProofStatusParams from '@/validators/ProofStatusParams'
 export default class ProveController {
   @Post('/')
   async prove(@Body({ required: true }) input: JsonProofInput) {
-    const { U, s, scalarForT, TPrecomputes, T, rInv } = input
-
     const job = await JobModel.create({
-      input: {
-        U: parse(U),
-        s: parse(s),
-        scalarForT: parse(scalarForT),
-        TPrecomputes: parse(TPrecomputes),
-        T: parse(T),
-        rInv: parse(rInv),
-      },
+      input: Object.entries(input).reduce(
+        (result, [key, value]) => ({ ...result, [key]: parse(value) }),
+        {}
+      ),
     })
     return {
       id: job.id,
