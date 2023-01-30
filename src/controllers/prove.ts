@@ -2,15 +2,27 @@ import { Body, Controller, Ctx, Get, Params, Post } from 'amala'
 import { Context } from 'koa'
 import { JobModel } from '@/models/Job'
 import { notFound } from '@hapi/boom'
+import { parse } from 'json-bigint'
 import JobStatus from '@/models/JobStatus'
-import ProofInput from '@/models/ProofInput'
+import JsonProofInput from '@/validators/JsonProofInput'
 import ProofStatusParams from '@/validators/ProofStatusParams'
 
 @Controller('/prove')
 export default class ProveController {
   @Post('/')
-  async prove(@Body({ required: true }) input: ProofInput) {
-    const job = await JobModel.create({ input })
+  async prove(@Body({ required: true }) input: JsonProofInput) {
+    const { U, s, scalarForT, TPrecomputes, T, rInv } = input
+
+    const job = await JobModel.create({
+      input: {
+        U: parse(U),
+        s: parse(s),
+        scalarForT: parse(scalarForT),
+        TPrecomputes: parse(TPrecomputes),
+        T: parse(T),
+        rInv: parse(rInv),
+      },
+    })
     return {
       id: job.id,
       position: await JobModel.countDocuments({
