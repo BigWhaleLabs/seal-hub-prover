@@ -17,6 +17,16 @@ Visit [this tutorial](./docs/aws.md) for Amazon AWS installation
 Run the following cURL or Wget command to download and launch the prover:
 
 ```bash
+bash <(curl -o- https://raw.githubusercontent.com/BigWhaleLabs/seal-hub-prover/main/scripts/install.sh)
+```
+
+```bash
+bash <(wget -qO- https://raw.githubusercontent.com/BigWhaleLabs/seal-hub-prover/main/scripts/install.sh)
+```
+
+Use `--non-interactive` flag to skip the interactive mode and use the default values
+
+```bash
 bash <(curl -o- https://raw.githubusercontent.com/BigWhaleLabs/seal-hub-prover/main/scripts/install.sh) --non-interactive
 ```
 
