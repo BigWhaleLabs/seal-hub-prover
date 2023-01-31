@@ -4,10 +4,7 @@ import { MongoMemoryServer } from 'mongodb-memory-server'
 import { Mongoose } from 'mongoose'
 import { Server } from 'http'
 import { Wallet } from 'ethers'
-import {
-  getMessageForAddress,
-  getSealHubInputs,
-} from '@big-whale-labs/seal-hub-kit'
+import { getMessage, getSealHubInputs } from '@big-whale-labs/seal-hub-kit'
 import { stringify } from 'json-bigint'
 import runApp from '@/helpers/runApp'
 import runMongo from '@/helpers/runMongo'
@@ -41,7 +38,7 @@ describe('Prove endpoint', () => {
 
   it('should return valid job', async () => {
     const wallet = Wallet.createRandom()
-    const message = getMessageForAddress(wallet.address)
+    const message = getMessage()
     const signature = await wallet.signMessage(message)
     const input = getSealHubInputs(signature, message)
     let testRequest = request(server).post('/prove')
