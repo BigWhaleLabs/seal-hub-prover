@@ -5,11 +5,11 @@ import ProofResult from '@/models/ProofResult'
 export default async function (input: ProofInput) {
   const ecdsaResult: ProofResult = await snarkjs.groth16.fullProve(
     {
+      T: input.T,
+      TPrecomputes: input.TPrecomputes,
       U: input.U,
       s: input.s,
       scalarForT: input.scalarForT,
-      TPrecomputes: input.TPrecomputes,
-      T: input.T,
     },
     './zk/ECDSAChecker.wasm',
     './zk/ECDSAChecker_final.zkey'

@@ -36,10 +36,10 @@ async function checkAndRunJobs() {
     })
     const { ecdsaResult, uPrecomputesResult } = await runJob(scheduledJob)
     await scheduledJob.updateOne({
-      status: JobStatus.completed,
-      ecdsaResult,
-      uPrecomputesResult,
       $unset: { input: true },
+      ecdsaResult,
+      status: JobStatus.completed,
+      uPrecomputesResult,
     })
   } catch (error) {
     console.log('Error running job:', error)

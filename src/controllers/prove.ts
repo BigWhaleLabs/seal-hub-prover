@@ -20,8 +20,8 @@ export default class ProveController {
     return {
       id: job.id,
       position: await JobModel.countDocuments({
-        status: JobStatus.scheduled,
         createdAt: { $lt: job.createdAt },
+        status: JobStatus.scheduled,
       }),
     }
   }
@@ -33,15 +33,15 @@ export default class ProveController {
       return ctx.throw(notFound())
     }
     return {
-      status: job.status,
+      ecdsaResult: job.ecdsaResult,
       position:
         job.status === JobStatus.scheduled
           ? await JobModel.countDocuments({
-              status: JobStatus.scheduled,
               createdAt: { $lt: job.createdAt },
+              status: JobStatus.scheduled,
             })
           : undefined,
-      ecdsaResult: job.ecdsaResult,
+      status: job.status,
       uPrecomputesResult: job.uPrecomputesResult,
     }
   }

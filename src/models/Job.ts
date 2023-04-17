@@ -9,14 +9,14 @@ import ProofInput from '@/models/ProofInput'
 import ProofResult from '@/models/ProofResult'
 
 @modelOptions({
-  schemaOptions: { timestamps: true, expireAfterSeconds: 24 * 60 * 60 * 1000 },
+  schemaOptions: { expireAfterSeconds: 24 * 60 * 60 * 1000, timestamps: true },
 })
 export class Job {
   @prop({
-    required: true,
-    index: true,
-    enum: JobStatus,
     default: JobStatus.scheduled,
+    enum: JobStatus,
+    index: true,
+    required: true,
   })
   status!: JobStatus
   @prop({ _id: false, allowMixed: Severity.ALLOW })
