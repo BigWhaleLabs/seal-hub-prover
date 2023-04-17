@@ -8,8 +8,8 @@ export default async function () {
   console.log(`Found ${jobs.length} jobs, cancelling them...`)
   for (const job of jobs) {
     await job.updateOne({
-      status: JobStatus.cancelled,
       $unset: { input: true },
+      status: JobStatus.cancelled,
     })
   }
   console.log('Cancled all jobs')

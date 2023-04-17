@@ -14,10 +14,10 @@ export default async function () {
   const router = new Router()
   await bootstrapControllers({
     app,
-    router,
     basePath: '/',
     controllers: [resolve(cwd(), 'dist/controllers/*')],
     disableVersioning: true,
+    router,
   })
   app.use(cors({ origin: '*' }))
   app.use(bodyParser())

@@ -7,6 +7,6 @@ dotenv.config({ path: resolve(cwd(), '.env') })
 
 // eslint-disable-next-line node/no-process-env
 export default cleanEnv(process.env, {
-  PORT: num({ default: 1337 }),
   MONGO: str({ default: 'mongodb://mongodb:27017/proofs' }),
+  PORT: num({ default: 1337 }),
 })
